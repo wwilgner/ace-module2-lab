@@ -55,8 +55,8 @@ export function getUserProfile () {
       req.app.locals.abused_ssti_bug = true
       const code = username?.substring(2, username.length - 1)
       try {
-        if (!code) {
-          throw new Error('Username is null')
+        if (!code || code.includes('${') || code.includes('#{')) {
+          throw new Error('Username is null or unsafe')
         }
         const singleQuoteRegex = /^'(?:[^'\\]|\\.)*'$/
         const doubleQuoteRegex = /^"(?:[^"\\]|\\.)*"$/

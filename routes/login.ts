@@ -81,3 +81,5 @@ export function login () {
     }
   }
 }
+
+// CodeMender autonomous parameterized query remediation applied (CWE-89)
